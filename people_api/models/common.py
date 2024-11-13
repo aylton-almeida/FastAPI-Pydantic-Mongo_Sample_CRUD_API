@@ -11,7 +11,8 @@ __all__ = ("BaseModel",)
 class BaseModel(pydantic.BaseModel):
     """All data models inherit from this class"""
 
-    @pydantic.root_validator(pre=True)
+    @pydantic.model_validator(mode="before")
+    @classmethod
     def _min_properties(cls, data):
         """At least one property is required"""
         if not data:
@@ -23,6 +24,4 @@ class BaseModel(pydantic.BaseModel):
         kwargs["exclude_none"] = not include_nulls
         return super().dict(**kwargs)
 
-    class Config:
-        extra = pydantic.Extra.forbid  # forbid sending additional fields/properties
-        anystr_strip_whitespace = True  # strip whitespaces from strings
+    model_config = {"extra": "forbid", "str_strip_whitespace": True}

@@ -2,10 +2,11 @@
 Methods to interact with the database
 """
 
+from .database import collection
+from .exceptions import *
+
 # # Package # #
 from .models import *
-from .exceptions import *
-from .database import collection
 from .utils import get_time, get_uuid
 
 __all__ = ("PeopleRepository",)

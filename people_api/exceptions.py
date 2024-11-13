@@ -8,23 +8,28 @@ Exceptions can return the HTTP response model (Response/JSONResponse) and part o
 # # Native # #
 from typing import Type
 
+from fastapi import status as statuscode
+
 # # Installed # #
 from fastapi.responses import JSONResponse
-from fastapi import status as statuscode
 
 # # Package # #
 from .models.errors import *
 
 __all__ = (
-    "BaseAPIException", "BaseIdentifiedException",
-    "NotFoundException", "AlreadyExistsException",
-    "PersonNotFoundException", "PersonAlreadyExistsException",
-    "get_exception_responses"
+    "BaseAPIException",
+    "BaseIdentifiedException",
+    "NotFoundException",
+    "AlreadyExistsException",
+    "PersonNotFoundException",
+    "PersonAlreadyExistsException",
+    "get_exception_responses",
 )
 
 
 class BaseAPIException(Exception):
     """Base error for custom API exceptions"""
+
     message = "Generic error"
     code = statuscode.HTTP_500_INTERNAL_SERVER_ERROR
     model = BaseError
@@ -38,10 +43,7 @@ class BaseAPIException(Exception):
         return self.message
 
     def response(self):
-        return JSONResponse(
-            content=self.data.dict(),
-            status_code=self.code
-        )
+        return JSONResponse(content=self.data.dict(), status_code=self.code)
 
     @classmethod
     def response_model(cls):
@@ -50,6 +52,7 @@ class BaseAPIException(Exception):
 
 class BaseIdentifiedException(BaseAPIException):
     """Base error for exceptions related with entities, uniquely identified"""
+
     message = "Entity error"
     code = statuscode.HTTP_500_INTERNAL_SERVER_ERROR
     model = BaseIdentifiedError
@@ -60,6 +63,7 @@ class BaseIdentifiedException(BaseAPIException):
 
 class NotFoundException(BaseIdentifiedException):
     """Base error for exceptions raised because an entity does not exist"""
+
     message = "The entity does not exist"
     code = statuscode.HTTP_404_NOT_FOUND
     model = NotFoundError
@@ -67,6 +71,7 @@ class NotFoundException(BaseIdentifiedException):
 
 class AlreadyExistsException(BaseIdentifiedException):
     """Base error for exceptions raised because an entity already exists"""
+
     message = "The entity already exists"
     code = statuscode.HTTP_409_CONFLICT
     model = AlreadyExistsError
@@ -74,11 +79,13 @@ class AlreadyExistsException(BaseIdentifiedException):
 
 class PersonNotFoundException(NotFoundException):
     """Error raised when a person does not exist"""
+
     message = "The person does not exist"
 
 
 class PersonAlreadyExistsException(AlreadyExistsException):
     """Error raised when a person already exists"""
+
     message = "The person already exists"
 
 

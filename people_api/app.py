@@ -7,19 +7,18 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi import status as statuscode
 
+from .exceptions import *
+from .middlewares import request_handler
+
 # # Package # #
 from .models import *
-from .exceptions import *
 from .repositories import PeopleRepository
-from .middlewares import request_handler
 from .settings import api_settings as settings
 
 __all__ = ("app", "run")
 
 
-app = FastAPI(
-    title=settings.title
-)
+app = FastAPI(title=settings.title)
 app.middleware("http")(request_handler)
 
 
@@ -27,7 +26,7 @@ app.middleware("http")(request_handler)
     "/people",
     response_model=PeopleRead,
     description="List all the available persons",
-    tags=["people"]
+    tags=["people"],
 )
 def _list_people():
     # TODO Filters
@@ -39,7 +38,7 @@ def _list_people():
     response_model=PersonRead,
     description="Get a single person by its unique ID",
     responses=get_exception_responses(PersonNotFoundException),
-    tags=["people"]
+    tags=["people"],
 )
 def _get_person(person_id: str):
     return PeopleRepository.get(person_id)
@@ -51,18 +50,21 @@ def _get_person(person_id: str):
     response_model=PersonRead,
     status_code=statuscode.HTTP_201_CREATED,
     responses=get_exception_responses(PersonAlreadyExistsException),
-    tags=["people"]
+    tags=["people"],
 )
 def _create_person(create: PersonCreate):
-    return PeopleRepository.create(create)
+    person = PeopleRepository.create(create)
+    return person
 
 
 @app.patch(
     "/people/{person_id}",
     description="Update a single person by its unique ID, providing the fields to update",
     status_code=statuscode.HTTP_204_NO_CONTENT,
-    responses=get_exception_responses(PersonNotFoundException, PersonAlreadyExistsException),
-    tags=["people"]
+    responses=get_exception_responses(
+        PersonNotFoundException, PersonAlreadyExistsException
+    ),
+    tags=["people"],
 )
 def _update_person(person_id: str, update: PersonUpdate):
     PeopleRepository.update(person_id, update)
@@ -73,7 +75,7 @@ def _update_person(person_id: str, update: PersonUpdate):
     description="Delete a single person by its unique ID",
     status_code=statuscode.HTTP_204_NO_CONTENT,
     responses=get_exception_responses(PersonNotFoundException),
-    tags=["people"]
+    tags=["people"],
 )
 def _delete_person(person_id: str):
     PeopleRepository.delete(person_id)
@@ -85,5 +87,5 @@ def run():
         app,
         host=settings.host,
         port=settings.port,
-        log_level=settings.log_level.lower()
+        log_level=settings.log_level.lower(),
     )

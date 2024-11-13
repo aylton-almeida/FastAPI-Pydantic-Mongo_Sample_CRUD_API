@@ -23,62 +23,52 @@ class PersonFields:
     name = Field(
         description="Full name of this person",
         example="John Smith",
-        **_string
+        **_string,
+        default=None,
     )
-    address = Field(
-        description="Address object where this person live"
-    )
+    address = Field(description="Address object where this person live")
     address_update = Field(
-        description=f"{address.description}. When updating, the whole Address object is required, as it gets replaced"
+        description=f"{address.description}. When updating, the whole Address object is required, as it gets replaced",
+        default=None,
     )
     birth = Field(
         description="Date of birth, in format YYYY-MM-DD, or Unix timestamp",
-        example="1999-12-31"
+        example="1999-12-31",
+        default=None,
     )
     age = Field(
         description="Age of this person, if date of birth is specified",
-        example=20
+        example=20,
+        default=None,
     )
     person_id = Field(
         description="Unique identifier of this person in the database",
         example=get_uuid(),
         min_length=36,
-        max_length=36
+        max_length=36,
     )
     """The person_id is the _id field of Mongo documents, and is set on PeopleRepository.create"""
 
     created = Field(
         alias="created",
         description="When the person was registered (Unix timestamp)",
-        **_unix_ts
+        **_unix_ts,
     )
     """Created is set on PeopleRepository.create"""
     updated = Field(
         alias="updated",
         description="When the person was updated for the last time (Unix timestamp)",
-        **_unix_ts
+        **_unix_ts,
     )
     """Created is set on PeopleRepository.update (and initially on create)"""
 
 
 class AddressFields:
     street = Field(
-        description="Main address line",
-        example="22nd Bunker Hill Avenue",
-        **_string
+        description="Main address line", example="22nd Bunker Hill Avenue", **_string
     )
-    city = Field(
-        description="City",
-        example="Hamburg",
-        **_string
-    )
+    city = Field(description="City", example="Hamburg", **_string)
     state = Field(
-        description="State, province and/or region",
-        example="Mordor",
-        **_string
+        description="State, province and/or region", example="Mordor", **_string
     )
-    zip_code = Field(
-        description="Postal/ZIP code",
-        example="19823",
-        **_string
-    )
+    zip_code = Field(description="Postal/ZIP code", example="19823", **_string)
