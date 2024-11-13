@@ -4,13 +4,13 @@ Settings loaders using Pydantic BaseSettings classes (load from environment vari
 
 # # Installed # #
 import pydantic
+from pydantic import ConfigDict
 
 __all__ = ("api_settings", "mongo_settings")
 
 
 class BaseSettings(pydantic.BaseSettings):
-    class Config:
-        env_file = ".env"
+    model_config = ConfigDict(env_file=".env")
 
 
 class APISettings(BaseSettings):
@@ -19,6 +19,8 @@ class APISettings(BaseSettings):
     port: int = 5000
     log_level: str = "INFO"
 
+    # TODO[pydantic]: The `Config` class inherits from another class, please create the `model_config` manually.
+    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.
     class Config(BaseSettings.Config):
         env_prefix = "API_"
 
@@ -28,6 +30,8 @@ class MongoSettings(BaseSettings):
     database: str = "fastapi+pydantic+mongo-example"
     collection: str = "people"
 
+    # TODO[pydantic]: The `Config` class inherits from another class, please create the `model_config` manually.
+    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.
     class Config(BaseSettings.Config):
         env_prefix = "MONGO_"
 

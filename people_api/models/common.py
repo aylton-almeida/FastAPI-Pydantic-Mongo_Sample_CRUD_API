@@ -4,6 +4,7 @@ Common variables and base classes for the models
 
 # # Installed # #
 import pydantic
+from pydantic import ConfigDict
 
 __all__ = ("BaseModel",)
 
@@ -22,7 +23,4 @@ class BaseModel(pydantic.BaseModel):
         """Override the super dict method by removing null keys from the dict, unless include_nulls=True"""
         kwargs["exclude_none"] = not include_nulls
         return super().dict(**kwargs)
-
-    class Config:
-        extra = pydantic.Extra.forbid  # forbid sending additional fields/properties
-        anystr_strip_whitespace = True  # strip whitespaces from strings
+    model_config = ConfigDict(extra=pydantic.Extra.forbid, str_strip_whitespace=True)
