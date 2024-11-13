@@ -1,5 +1,5 @@
 Tool: https://github.com/pydantic/bump-pydantic
 
 Tests: 0/14 (0.0%)
-Pylint: 5.77
-Pyright: 12 errors, 0 warnings
+Pylint: 7.14
+Pyright: 69 errors, 0 warnings
