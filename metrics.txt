@@ -10,6 +10,7 @@ Automatic Migration
 Tool: https://github.com/pydantic/bump-pydantic
 
 Runs: False
+Error: root_validator is deprecated
 Tests: 0/14 (0.0%)
 Pylint: 7.14
 Pyright: 69 errors, 0 warnings
