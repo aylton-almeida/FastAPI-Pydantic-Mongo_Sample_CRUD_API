@@ -1,3 +1,16 @@
+Before Migration
+
 Tests: 14/14 (100.00%)
 Pylint: 6.35
 Pyright: 84 errors, 0 warnings
+
+
+Automatic Migration
+Tool: https://github.com/pydantic/bump-pydantic
+
+Tests: 0/14 (0.0%)
+Pylint: 7.14
+Pyright: 69 errors, 0 warnings
+
+
+Manual Migration
