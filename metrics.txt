@@ -14,3 +14,7 @@ Pyright: 69 errors, 0 warnings
 
 
 Manual Migration
+
+Tests: 14/14 (100.00%)
+Pylint: 8.20
+Pyright: 65 errors, 0 warnings
