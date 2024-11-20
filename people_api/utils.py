@@ -10,7 +10,7 @@ from typing import Union
 __all__ = ("get_time", "get_uuid")
 
 
-def get_time(seconds_precision=True) -> Union[int, float]:
+def get_time(seconds_precision: bool = True) -> Union[int, float]:
     """Returns the current time as Unix/Epoch timestamp, seconds precision by default"""
     return time() if not seconds_precision else int(time())
 

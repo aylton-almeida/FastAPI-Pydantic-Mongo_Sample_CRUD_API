@@ -20,26 +20,26 @@ _unix_ts = dict(example=get_time())
 
 
 class PersonFields:
-    name = Field(
+    name: str = Field(
         description="Full name of this person",
         example="John Smith",
         **_string
     )
-    address = Field(
+    address: str = Field(
         description="Address object where this person live"
     )
-    address_update = Field(
+    address_update: str = Field(
         description=f"{address.description}. When updating, the whole Address object is required, as it gets replaced"
     )
-    birth = Field(
+    birth: str = Field(
         description="Date of birth, in format YYYY-MM-DD, or Unix timestamp",
         example="1999-12-31"
     )
-    age = Field(
+    age: int = Field(
         description="Age of this person, if date of birth is specified",
         example=20
     )
-    person_id = Field(
+    person_id: str = Field(
         description="Unique identifier of this person in the database",
         example=get_uuid(),
         min_length=36,
@@ -47,13 +47,13 @@ class PersonFields:
     )
     """The person_id is the _id field of Mongo documents, and is set on PeopleRepository.create"""
 
-    created = Field(
+    created: int = Field(
         alias="created",
         description="When the person was registered (Unix timestamp)",
         **_unix_ts
     )
     """Created is set on PeopleRepository.create"""
-    updated = Field(
+    updated: int = Field(
         alias="updated",
         description="When the person was updated for the last time (Unix timestamp)",
         **_unix_ts
@@ -62,23 +62,24 @@ class PersonFields:
 
 
 class AddressFields:
-    street = Field(
+    street: str = Field(
         description="Main address line",
         example="22nd Bunker Hill Avenue",
         **_string
     )
-    city = Field(
+    city: str = Field(
         description="City",
         example="Hamburg",
         **_string
     )
-    state = Field(
+    state: str = Field(
         description="State, province and/or region",
         example="Mordor",
         **_string
     )
-    zip_code = Field(
+    zip_code: str = Field(
         description="Postal/ZIP code",
         example="19823",
         **_string
     )
+

@@ -4,6 +4,7 @@ Settings loaders using Pydantic BaseSettings classes (load from environment vari
 
 # # Installed # #
 import pydantic
+from typing import Optional
 
 __all__ = ("api_settings", "mongo_settings")
 
@@ -32,5 +33,11 @@ class MongoSettings(BaseSettings):
         env_prefix = "MONGO_"
 
 
-api_settings = APISettings()
-mongo_settings = MongoSettings()
+api_settings: Optional[APISettings] = None
+mongo_settings: Optional[MongoSettings] = None
+
+async def load_settings():
+    global api_settings, mongo_settings
+    api_settings = APISettings()
+    mongo_settings = MongoSettings()
+

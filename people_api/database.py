@@ -9,7 +9,11 @@ from pymongo.collection import Collection
 # # Package # #
 from .settings import mongo_settings as settings
 
+# # Python # #
+from typing import Any
+
 __all__ = ("client", "collection")
 
-client = MongoClient(settings.uri)
+client: Any = MongoClient(settings.uri)
 collection: Collection = client[settings.database][settings.collection]
+

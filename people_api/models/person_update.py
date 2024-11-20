@@ -22,6 +22,11 @@ class PersonUpdate(BaseModel):
     address: Optional[Address] = PersonFields.address_update
     birth: Optional[date] = PersonFields.birth
 
+    class Config:
+        json_encoders = {
+            date: lambda v: v.isoformat(),
+        }
+
     def dict(self, **kwargs):
         # The "birth" field must be converted to string (isoformat) when exporting to dict (for Mongo)
         # TODO Better way to do this? (automatic conversion can be done with Config.json_encoders, but not available for dict
@@ -29,3 +34,4 @@ class PersonUpdate(BaseModel):
         with suppress(KeyError):
             d["birth"] = d.pop("birth").isoformat()
         return d
+

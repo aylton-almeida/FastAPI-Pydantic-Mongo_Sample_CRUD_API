@@ -4,8 +4,9 @@ Models for Error responses. Custom exceptions must be associated with one of the
 
 # # Installed # #
 from pydantic import BaseModel, Field
+from typing import Optional
 
-__all__ = ("BaseError", "BaseIdentifiedError", "NotFoundError", "AlreadyExistsError")
+__all__: list[str] = ["BaseError", "BaseIdentifiedError", "NotFoundError", "AlreadyExistsError"]
 
 
 class BaseError(BaseModel):
