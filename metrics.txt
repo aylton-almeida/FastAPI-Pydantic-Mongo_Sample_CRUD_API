@@ -26,6 +26,16 @@ Pyright: 65 errors, 0 warnings
 Zero Shot
 
 Runs: False
+Error: root_validator is deprecated
 Tests: 0/14 (0.0%)
 Pylint: 6.33
 Pyright: 89 errors, 0 warnings
+
+
+One Shot
+
+Runs: False
+Error: Using @dataclasses on top of Pydantic models
+Tests: 0/14 (0.0%)
+Pylint: 6.55
+Pyright: 87 errors, 0 warnings
