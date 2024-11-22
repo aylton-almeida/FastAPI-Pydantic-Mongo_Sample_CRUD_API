@@ -29,9 +29,9 @@ app.middleware("http")(request_handler)
     description="List all the available persons",
     tags=["people"]
 )
-def _list_people():
+async def _list_people() -> PeopleRead:
     # TODO Filters
-    return PeopleRepository.list()
+    return await PeopleRepository.list()
 
 
 @app.get(
@@ -41,8 +41,8 @@ def _list_people():
     responses=get_exception_responses(PersonNotFoundException),
     tags=["people"]
 )
-def _get_person(person_id: str):
-    return PeopleRepository.get(person_id)
+async def _get_person(person_id: str) -> PersonRead:
+    return await PeopleRepository.get(person_id)
 
 
 @app.post(
@@ -53,8 +53,8 @@ def _get_person(person_id: str):
     responses=get_exception_responses(PersonAlreadyExistsException),
     tags=["people"]
 )
-def _create_person(create: PersonCreate):
-    return PeopleRepository.create(create)
+async def _create_person(create: PersonCreate) -> PersonRead:
+    return await PeopleRepository.create(create)
 
 
 @app.patch(
@@ -64,8 +64,8 @@ def _create_person(create: PersonCreate):
     responses=get_exception_responses(PersonNotFoundException, PersonAlreadyExistsException),
     tags=["people"]
 )
-def _update_person(person_id: str, update: PersonUpdate):
-    PeopleRepository.update(person_id, update)
+async def _update_person(person_id: str, update: PersonUpdate) -> None:
+    await PeopleRepository.update(person_id, update)
 
 
 @app.delete(
@@ -75,11 +75,11 @@ def _update_person(person_id: str, update: PersonUpdate):
     responses=get_exception_responses(PersonNotFoundException),
     tags=["people"]
 )
-def _delete_person(person_id: str):
-    PeopleRepository.delete(person_id)
+async def _delete_person(person_id: str) -> None:
+    await PeopleRepository.delete(person_id)
 
 
-def run():
+def run() -> None:
     """Run the API using Uvicorn"""
     uvicorn.run(
         app,
@@ -87,3 +87,4 @@ def run():
         port=settings.port,
         log_level=settings.log_level.lower()
     )
+

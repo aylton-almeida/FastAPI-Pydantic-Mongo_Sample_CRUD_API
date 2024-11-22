@@ -3,12 +3,13 @@ Person Read model. Inherits from PersonCreate and adds the person_id field, whic
 """
 
 # # Native # #
+from __future__ import annotations
 from datetime import datetime
 from typing import Optional, List
 
 # # Installed # #
-import pydantic
 from dateutil.relativedelta import relativedelta
+from pydantic import model_validator
 
 # # Package # #
 from .person_create import PersonCreate
@@ -24,8 +25,9 @@ class PersonRead(PersonCreate):
     created: int = PersonFields.created
     updated: int = PersonFields.updated
 
-    @pydantic.root_validator(pre=True)
-    def _set_person_id(cls, data):
+    @model_validator(mode="before")
+    @classmethod
+    def _set_person_id(cls, data) -> PersonRead:
         """Swap the field _id to person_id (this could be done with field alias, by setting the field as "_id"
         and the alias as "person_id", but can be quite confusing)"""
         document_id = data.get("_id")
@@ -33,17 +35,18 @@ class PersonRead(PersonCreate):
             data["person_id"] = document_id
         return data
 
-    @pydantic.root_validator()
-    def _set_age(cls, data):
+    @model_validator(mode="after")
+    @classmethod
+    def _set_age(cls, data) -> PersonRead:
         """Calculate the current age of the person from the date of birth, if any"""
         birth = data.get("birth")
         if birth:
             today = datetime.now().date()
-            data["age"] = relativedelta(today, birth).years
+            data.age = relativedelta(today, birth).years
         return data
 
-    class Config(PersonCreate.Config):
-        extra = pydantic.Extra.ignore  # if a read document has extra fields, ignore them
+    model_config = {"extra": "ignore"}
 
 
 PeopleRead = List[PersonRead]
+

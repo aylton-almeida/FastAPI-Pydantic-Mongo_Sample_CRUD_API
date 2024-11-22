@@ -13,21 +13,21 @@ __all__ = ("PeopleRepository",)
 
 class PeopleRepository:
     @staticmethod
-    def get(person_id: str) -> PersonRead:
+    async def get(person_id: str) -> PersonRead:
         """Retrieve a single Person by its unique id"""
-        document = collection.find_one({"_id": person_id})
+        document = await collection.find_one({"_id": person_id})
         if not document:
             raise PersonNotFoundException(person_id)
         return PersonRead(**document)
 
     @staticmethod
-    def list() -> PeopleRead:
+    async def list() -> PeopleRead:
         """Retrieve all the available persons"""
         cursor = collection.find()
-        return [PersonRead(**document) for document in cursor]
+        return [PersonRead(**document) async for document in cursor]
 
     @staticmethod
-    def create(create: PersonCreate) -> PersonRead:
+    async def create(create: PersonCreate) -> PersonRead:
         """Create a person and return its Read object"""
         document = create.dict()
         document["created"] = document["updated"] = get_time()
@@ -35,24 +35,25 @@ class PeopleRepository:
         # The time and id could be inserted as a model's Field default factory,
         # but would require having another model for Repository only to implement it
 
-        result = collection.insert_one(document)
+        result = await collection.insert_one(document)
         assert result.acknowledged
 
-        return PeopleRepository.get(result.inserted_id)
+        return await PeopleRepository.get(result.inserted_id)
 
     @staticmethod
-    def update(person_id: str, update: PersonUpdate):
+    async def update(person_id: str, update: PersonUpdate):
         """Update a person by giving only the fields to update"""
         document = update.dict()
         document["updated"] = get_time()
 
-        result = collection.update_one({"_id": person_id}, {"$set": document})
+        result = await collection.update_one({"_id": person_id}, {"$set": document})
         if not result.modified_count:
             raise PersonNotFoundException(identifier=person_id)
 
     @staticmethod
-    def delete(person_id: str):
+    async def delete(person_id: str):
         """Delete a person given its unique id"""
-        result = collection.delete_one({"_id": person_id})
+        result = await collection.delete_one({"_id": person_id})
         if not result.deleted_count:
             raise PersonNotFoundException(identifier=person_id)
+

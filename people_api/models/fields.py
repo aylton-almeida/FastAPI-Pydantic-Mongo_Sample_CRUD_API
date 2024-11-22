@@ -13,33 +13,33 @@ from ..utils import get_time, get_uuid
 
 __all__ = ("PersonFields", "AddressFields")
 
-_string = dict(min_length=1)
+_string: dict = dict(min_length=1)
 """Common attributes for all String fields"""
-_unix_ts = dict(example=get_time())
+_unix_ts: dict = dict(example=get_time())
 """Common attributes for all Unix timestamp fields"""
 
 
 class PersonFields:
-    name = Field(
+    name: Field = Field(
         description="Full name of this person",
         example="John Smith",
         **_string
     )
-    address = Field(
+    address: Field = Field(
         description="Address object where this person live"
     )
-    address_update = Field(
+    address_update: Field = Field(
         description=f"{address.description}. When updating, the whole Address object is required, as it gets replaced"
     )
-    birth = Field(
+    birth: Field = Field(
         description="Date of birth, in format YYYY-MM-DD, or Unix timestamp",
         example="1999-12-31"
     )
-    age = Field(
+    age: Field = Field(
         description="Age of this person, if date of birth is specified",
         example=20
     )
-    person_id = Field(
+    person_id: Field = Field(
         description="Unique identifier of this person in the database",
         example=get_uuid(),
         min_length=36,
@@ -47,13 +47,13 @@ class PersonFields:
     )
     """The person_id is the _id field of Mongo documents, and is set on PeopleRepository.create"""
 
-    created = Field(
+    created: Field = Field(
         alias="created",
         description="When the person was registered (Unix timestamp)",
         **_unix_ts
     )
     """Created is set on PeopleRepository.create"""
-    updated = Field(
+    updated: Field = Field(
         alias="updated",
         description="When the person was updated for the last time (Unix timestamp)",
         **_unix_ts
@@ -62,23 +62,24 @@ class PersonFields:
 
 
 class AddressFields:
-    street = Field(
+    street: Field = Field(
         description="Main address line",
         example="22nd Bunker Hill Avenue",
         **_string
     )
-    city = Field(
+    city: Field = Field(
         description="City",
         example="Hamburg",
         **_string
     )
-    state = Field(
+    state: Field = Field(
         description="State, province and/or region",
         example="Mordor",
         **_string
     )
-    zip_code = Field(
+    zip_code: Field = Field(
         description="Postal/ZIP code",
         example="19823",
         **_string
     )
+

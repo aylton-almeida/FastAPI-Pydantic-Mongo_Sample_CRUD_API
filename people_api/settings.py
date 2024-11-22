@@ -3,14 +3,13 @@ Settings loaders using Pydantic BaseSettings classes (load from environment vari
 """
 
 # # Installed # #
-import pydantic
+from pydantic import BaseSettings
 
 __all__ = ("api_settings", "mongo_settings")
 
 
-class BaseSettings(pydantic.BaseSettings):
-    class Config:
-        env_file = ".env"
+class BaseSettings(BaseSettings):
+    model_config = {"env_file": ".env"}
 
 
 class APISettings(BaseSettings):
@@ -19,8 +18,7 @@ class APISettings(BaseSettings):
     port: int = 5000
     log_level: str = "INFO"
 
-    class Config(BaseSettings.Config):
-        env_prefix = "API_"
+    model_config = {"env_prefix": "API_"}
 
 
 class MongoSettings(BaseSettings):
@@ -28,9 +26,9 @@ class MongoSettings(BaseSettings):
     database: str = "fastapi+pydantic+mongo-example"
     collection: str = "people"
 
-    class Config(BaseSettings.Config):
-        env_prefix = "MONGO_"
+    model_config = {"env_prefix": "MONGO_"}
 
 
 api_settings = APISettings()
 mongo_settings = MongoSettings()
+

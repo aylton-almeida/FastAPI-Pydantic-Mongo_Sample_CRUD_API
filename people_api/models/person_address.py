@@ -3,6 +3,8 @@ The address of a person is part of the Person model
 """
 
 # # Package # #
+from __future__ import annotations
+
 from .common import BaseModel
 from .fields import AddressFields
 
@@ -15,3 +17,6 @@ class Address(BaseModel):
     city: str = AddressFields.city
     state: str = AddressFields.state
     zip_code: str = AddressFields.zip_code
+
+    model_config = {"extra": "ignore"}
+
