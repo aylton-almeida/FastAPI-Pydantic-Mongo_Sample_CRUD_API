@@ -1,19 +1,18 @@
-"""MODELS - PERSON - UPDATE
-Person Update model. All attributes are set as Optional, as we use the PATCH method for update
-(in which only the attributes to change are sent on request body)
-"""
+from __future__ import annotations
 
-# # Native # #
 from datetime import date
 from typing import Optional
 from contextlib import suppress
 
-# # Package # #
-from .common import BaseModel
-from .fields import PersonFields
+from pydantic import BaseModel, Field, model_validator
+
 from .person_address import Address
 
-__all__ = ("PersonUpdate",)
+
+class PersonFields:
+    name: Optional[str] = Field(None, description="The name of the person")
+    address_update: Optional[Address] = Field(None, description="The address of the person")
+    birth: Optional[date] = Field(None, description="The birth date of the person")
 
 
 class PersonUpdate(BaseModel):
@@ -22,10 +21,13 @@ class PersonUpdate(BaseModel):
     address: Optional[Address] = PersonFields.address_update
     birth: Optional[date] = PersonFields.birth
 
-    def dict(self, **kwargs):
-        # The "birth" field must be converted to string (isoformat) when exporting to dict (for Mongo)
-        # TODO Better way to do this? (automatic conversion can be done with Config.json_encoders, but not available for dict
-        d = super().dict(**kwargs)
-        with suppress(KeyError):
-            d["birth"] = d.pop("birth").isoformat()
-        return d
+    @model_validator(mode="before")
+    @classmethod
+    def _convert_birth_to_string(cls, data) -> PersonUpdate:
+        """Converts the "birth" field to string (isoformat) when exporting to dict (for Mongo)"""
+        if "birth" in data:
+            data["birth"] = data["birth"].isoformat()
+        return data
+
+    model_config = {"extra": "ignore"}
+

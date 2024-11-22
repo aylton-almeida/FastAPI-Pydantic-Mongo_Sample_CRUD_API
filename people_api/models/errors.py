@@ -1,8 +1,5 @@
-"""MODELS - ERRORS
-Models for Error responses. Custom exceptions must be associated with one of these
-"""
+from __future__ import annotations
 
-# # Installed # #
 from pydantic import BaseModel, Field
 
 __all__ = ("BaseError", "BaseIdentifiedError", "NotFoundError", "AlreadyExistsError")
@@ -11,16 +8,21 @@ __all__ = ("BaseError", "BaseIdentifiedError", "NotFoundError", "AlreadyExistsEr
 class BaseError(BaseModel):
     message: str = Field(..., description="Error message or description")
 
+    model_config = {"extra": "ignore"}
+
 
 class BaseIdentifiedError(BaseError):
     identifier: str = Field(..., description="Unique identifier which this error references to")
 
+    model_config = {"extra": "ignore"}
+
 
 class NotFoundError(BaseIdentifiedError):
     """The entity does not exist"""
-    pass
+    model_config = {"extra": "ignore"}
 
 
 class AlreadyExistsError(BaseIdentifiedError):
     """An entity being created already exists"""
-    pass
+    model_config = {"extra": "ignore"}
+

@@ -61,7 +61,7 @@ Pyright: 86 errors, 0 warnings
 
 Example: example2_manually_made.py
 Runs: False
-Error: Name 'Person' is not defined
+Error: AttributeError: name
 Tests: 0/14 (0.0%)
-Pylint: 5.40
-Pyright: 90 errors, 0 warnings
+Pylint: 6.59
+Pyright: 94 errors, 0 warnings
