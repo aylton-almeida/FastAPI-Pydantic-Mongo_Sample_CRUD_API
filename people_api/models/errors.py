@@ -1,15 +1,16 @@
-"""MODELS - ERRORS
-Models for Error responses. Custom exceptions must be associated with one of these
-"""
+from __future__ import annotations
 
-# # Installed # #
 from pydantic import BaseModel, Field
+from typing import Optional
 
 __all__ = ("BaseError", "BaseIdentifiedError", "NotFoundError", "AlreadyExistsError")
 
 
 class BaseError(BaseModel):
     message: str = Field(..., description="Error message or description")
+
+    class Config:
+        extra = "ignore"
 
 
 class BaseIdentifiedError(BaseError):

@@ -42,6 +42,13 @@ Tests: 0/14 (0.0%)
 Pylint: 6.55
 Pyright: 87 errors, 0 warnings
 
+Example: example2_manually_made.py
+Runs: False
+Error: root_validator is deprecated
+Tests: 0/14 (0.0%)
+Pylint: 6.11
+Pyright: 92 errors, 0 warnings
+
 
 Chain of Thoughts
 

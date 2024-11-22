@@ -1,19 +1,18 @@
-"""MODELS - PERSON - UPDATE
-Person Update model. All attributes are set as Optional, as we use the PATCH method for update
-(in which only the attributes to change are sent on request body)
-"""
+from __future__ import annotations
 
-# # Native # #
 from datetime import date
 from typing import Optional
 from contextlib import suppress
 
-# # Package # #
-from .common import BaseModel
-from .fields import PersonFields
+from pydantic import BaseModel, Field
+
 from .person_address import Address
 
-__all__ = ("PersonUpdate",)
+
+class PersonFields:
+    name: Optional[str] = Field(None, description="The name of the person")
+    address_update: Optional[Address] = Field(None, description="The address of the person")
+    birth: Optional[date] = Field(None, description="The birth date of the person")
 
 
 class PersonUpdate(BaseModel):
@@ -21,6 +20,12 @@ class PersonUpdate(BaseModel):
     name: Optional[str] = PersonFields.name
     address: Optional[Address] = PersonFields.address_update
     birth: Optional[date] = PersonFields.birth
+
+    class Config:
+        extra = "ignore"
+        json_encoders = {
+            date: lambda v: v.isoformat(),
+        }
 
     def dict(self, **kwargs):
         # The "birth" field must be converted to string (isoformat) when exporting to dict (for Mongo)

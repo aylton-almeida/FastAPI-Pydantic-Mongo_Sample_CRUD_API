@@ -1,13 +1,12 @@
-"""MODELS - PERSON ADDRESS
-The address of a person is part of the Person model
-"""
+from __future__ import annotations
 
-# # Package # #
-from .common import BaseModel
-from .fields import AddressFields
+from pydantic import BaseModel, Field
 
-__all__ = ("Address",)
-
+class AddressFields:
+    street: str = Field(..., description="Street name and number")
+    city: str = Field(..., description="City name")
+    state: str = Field(..., description="State name")
+    zip_code: str = Field(..., description="Zip code")
 
 class Address(BaseModel):
     """The address information of a person"""
@@ -15,3 +14,6 @@ class Address(BaseModel):
     city: str = AddressFields.city
     state: str = AddressFields.state
     zip_code: str = AddressFields.zip_code
+
+    class Config:
+        extra = "ignore"

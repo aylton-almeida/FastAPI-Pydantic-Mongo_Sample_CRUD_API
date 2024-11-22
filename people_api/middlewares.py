@@ -1,17 +1,13 @@
-"""MIDDLEWARES
-Functions that run as something gets processed
-"""
+from __future__ import annotations
 
-# # Installed # #
 from fastapi import Request
-
-# # Package # #
-from .exceptions import *
+from typing import Callable, Any
+from .exceptions import BaseAPIException
 
 __all__ = ("request_handler",)
 
 
-async def request_handler(request: Request, call_next):
+async def request_handler(request: Request, call_next: Callable[[Request], Any]):
     """Middleware used to process each request on FastAPI, to provide error handling (convert exceptions to responses).
     TODO: add logging and individual request traceability
     """

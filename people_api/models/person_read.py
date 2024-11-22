@@ -1,16 +1,11 @@
-"""MODELS - PERSON - READ
-Person Read model. Inherits from PersonCreate and adds the person_id field, which is the _id field on Mongo documents
-"""
+from __future__ import annotations
 
-# # Native # #
 from datetime import datetime
 from typing import Optional, List
 
-# # Installed # #
-import pydantic
+from pydantic import BaseModel, Field, root_validator, Extra
 from dateutil.relativedelta import relativedelta
 
-# # Package # #
 from .person_create import PersonCreate
 from .fields import PersonFields
 
@@ -24,8 +19,9 @@ class PersonRead(PersonCreate):
     created: int = PersonFields.created
     updated: int = PersonFields.updated
 
-    @pydantic.root_validator(pre=True)
-    def _set_person_id(cls, data):
+    @root_validator(pre=True)
+    @classmethod
+    def _set_person_id(cls, data) -> dict:
         """Swap the field _id to person_id (this could be done with field alias, by setting the field as "_id"
         and the alias as "person_id", but can be quite confusing)"""
         document_id = data.get("_id")
@@ -33,8 +29,9 @@ class PersonRead(PersonCreate):
             data["person_id"] = document_id
         return data
 
-    @pydantic.root_validator()
-    def _set_age(cls, data):
+    @root_validator()
+    @classmethod
+    def _set_age(cls, data) -> dict:
         """Calculate the current age of the person from the date of birth, if any"""
         birth = data.get("birth")
         if birth:
@@ -43,7 +40,7 @@ class PersonRead(PersonCreate):
         return data
 
     class Config(PersonCreate.Config):
-        extra = pydantic.Extra.ignore  # if a read document has extra fields, ignore them
+        extra = Extra.ignore  # if a read document has extra fields, ignore them
 
 
 PeopleRead = List[PersonRead]

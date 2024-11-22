@@ -1,35 +1,26 @@
-"""SETTINGS
-Settings loaders using Pydantic BaseSettings classes (load from environment variables / dotenv file)
-"""
+from __future__ import annotations
 
-# # Installed # #
-import pydantic
+from pydantic import BaseSettings, Field
 
 __all__ = ("api_settings", "mongo_settings")
 
 
-class BaseSettings(pydantic.BaseSettings):
+class BaseSettings(BaseSettings):
     class Config:
         env_file = ".env"
 
 
 class APISettings(BaseSettings):
-    title: str = "People API"
-    host: str = "0.0.0.0"
-    port: int = 5000
-    log_level: str = "INFO"
-
-    class Config(BaseSettings.Config):
-        env_prefix = "API_"
+    title: str = Field("People API", env="API_TITLE")
+    host: str = Field("0.0.0.0", env="API_HOST")
+    port: int = Field(5000, env="API_PORT")
+    log_level: str = Field("INFO", env="API_LOG_LEVEL")
 
 
 class MongoSettings(BaseSettings):
-    uri: str = "mongodb://127.0.0.1:27017"
-    database: str = "fastapi+pydantic+mongo-example"
-    collection: str = "people"
-
-    class Config(BaseSettings.Config):
-        env_prefix = "MONGO_"
+    uri: str = Field("mongodb://127.0.0.1:27017", env="MONGO_URI")
+    database: str = Field("fastapi+pydantic+mongo-example", env="MONGO_DATABASE")
+    collection: str = Field("people", env="MONGO_COLLECTION")
 
 
 api_settings = APISettings()

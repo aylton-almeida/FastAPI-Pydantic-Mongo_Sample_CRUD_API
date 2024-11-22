@@ -1,28 +1,25 @@
-"""MODELS - COMMON
-Common variables and base classes for the models
-"""
+from __future__ import annotations
 
-# # Installed # #
-import pydantic
+from typing import Any, Dict
 
-__all__ = ("BaseModel",)
+from pydantic import BaseModel as PydanticBaseModel, Extra, root_validator
 
 
-class BaseModel(pydantic.BaseModel):
+class BaseModel(PydanticBaseModel):
     """All data models inherit from this class"""
 
-    @pydantic.root_validator(pre=True)
-    def _min_properties(cls, data):
+    @root_validator(pre=True)
+    def _min_properties(cls, data: Dict[str, Any]) -> Dict[str, Any]:
         """At least one property is required"""
         if not data:
             raise ValueError("At least one property is required")
         return data
 
-    def dict(self, include_nulls=False, **kwargs):
+    def dict(self, include_nulls: bool = False, **kwargs: Any) -> Dict[str, Any]:
         """Override the super dict method by removing null keys from the dict, unless include_nulls=True"""
         kwargs["exclude_none"] = not include_nulls
         return super().dict(**kwargs)
 
     class Config:
-        extra = pydantic.Extra.forbid  # forbid sending additional fields/properties
+        extra = Extra.forbid  # forbid sending additional fields/properties
         anystr_strip_whitespace = True  # strip whitespaces from strings
