@@ -41,3 +41,13 @@ Error: Using @dataclasses on top of Pydantic models
 Tests: 0/14 (0.0%)
 Pylint: 6.55
 Pyright: 87 errors, 0 warnings
+
+
+Chain of Thoughts
+
+Example: example1_only_field_validator.py
+Runs: False
+Error: Name 'Person' is not defined
+Tests: 0/14 (0.0%)
+Pylint: 5.40
+Pyright: 90 errors, 0 warnings
