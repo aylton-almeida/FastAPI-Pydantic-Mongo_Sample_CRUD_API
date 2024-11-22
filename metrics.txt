@@ -35,6 +35,7 @@ Pyright: 89 errors, 0 warnings
 
 One Shot
 
+Example: example1_only_field_validator.py
 Runs: False
 Error: Using @dataclasses on top of Pydantic models
 Tests: 0/14 (0.0%)
