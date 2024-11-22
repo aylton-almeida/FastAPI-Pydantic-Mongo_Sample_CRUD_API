@@ -47,6 +47,13 @@ Chain of Thoughts
 
 Example: example1_only_field_validator.py
 Runs: False
+Error: root_validator is deprecated
+Tests: 0/14 (0.0%)
+Pylint: 5.89
+Pyright: 86 errors, 0 warnings
+
+Example: example2_manually_made.py
+Runs: False
 Error: Name 'Person' is not defined
 Tests: 0/14 (0.0%)
 Pylint: 5.40
