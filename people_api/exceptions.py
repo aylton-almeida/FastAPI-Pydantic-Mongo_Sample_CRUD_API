@@ -34,17 +34,17 @@ class BaseAPIException(Exception):
         self.message = kwargs["message"]
         self.data = self.model(**kwargs)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.message
 
-    def response(self):
+    def response(self) -> JSONResponse:
         return JSONResponse(
             content=self.data.dict(),
             status_code=self.code
         )
 
     @classmethod
-    def response_model(cls):
+    def response_model(cls) -> dict:
         return {cls.code: {"model": cls.model}}
 
 
@@ -89,3 +89,4 @@ def get_exception_responses(*args: Type[BaseAPIException]) -> dict:
     for cls in args:
         responses.update(cls.response_model())
     return responses
+

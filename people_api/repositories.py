@@ -29,7 +29,7 @@ class PeopleRepository:
     @staticmethod
     def create(create: PersonCreate) -> PersonRead:
         """Create a person and return its Read object"""
-        document = create.dict()
+        document = create.model_dump()
         document["created"] = document["updated"] = get_time()
         document["_id"] = get_uuid()
         # The time and id could be inserted as a model's Field default factory,
@@ -43,7 +43,7 @@ class PeopleRepository:
     @staticmethod
     def update(person_id: str, update: PersonUpdate):
         """Update a person by giving only the fields to update"""
-        document = update.dict()
+        document = update.model_dump()
         document["updated"] = get_time()
 
         result = collection.update_one({"_id": person_id}, {"$set": document})
@@ -56,3 +56,4 @@ class PeopleRepository:
         result = collection.delete_one({"_id": person_id})
         if not result.deleted_count:
             raise PersonNotFoundException(identifier=person_id)
+

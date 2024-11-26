@@ -2,8 +2,9 @@
 The address of a person is part of the Person model
 """
 
-# # Package # #
-from .common import BaseModel
+from __future__ import annotations
+
+from pydantic import BaseModel
 from .fields import AddressFields
 
 __all__ = ("Address",)
@@ -15,3 +16,6 @@ class Address(BaseModel):
     city: str = AddressFields.city
     state: str = AddressFields.state
     zip_code: str = AddressFields.zip_code
+
+    model_config = {"extra": "ignore"}
+
