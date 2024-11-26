@@ -11,6 +11,8 @@ __all__ = ("BaseError", "BaseIdentifiedError", "NotFoundError", "AlreadyExistsEr
 class BaseError(BaseModel):
     message: str = Field(..., description="Error message or description")
 
+    model_config = {"extra": "ignore"}
+
 
 class BaseIdentifiedError(BaseError):
     identifier: str = Field(..., description="Unique identifier which this error references to")
@@ -24,3 +26,4 @@ class NotFoundError(BaseIdentifiedError):
 class AlreadyExistsError(BaseIdentifiedError):
     """An entity being created already exists"""
     pass
+

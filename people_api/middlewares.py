@@ -24,3 +24,4 @@ async def request_handler(request: Request, call_next):
 
         # Re-raising other exceptions will return internal error 500 to the client
         raise ex
+

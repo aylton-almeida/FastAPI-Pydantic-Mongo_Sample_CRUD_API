@@ -59,6 +59,15 @@ Pylint: 6.11
 Pyright: 92 errors, 0 warnings
 
 
+One Shot 4o
+
+Example: example2_manually_made.py
+Runs: True
+Tests: 0/14 (0.0%)
+Pylint: 5.08
+Pyright: 15 errors, 0 warnings
+
+
 Chain of Thoughts
 
 Example: example1_only_field_validator.py

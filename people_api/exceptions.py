@@ -39,7 +39,7 @@ class BaseAPIException(Exception):
 
     def response(self):
         return JSONResponse(
-            content=self.data.dict(),
+            content=self.data.model_dump(),
             status_code=self.code
         )
 
@@ -89,3 +89,4 @@ def get_exception_responses(*args: Type[BaseAPIException]) -> dict:
     for cls in args:
         responses.update(cls.response_model())
     return responses
+

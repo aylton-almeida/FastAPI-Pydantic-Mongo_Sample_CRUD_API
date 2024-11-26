@@ -15,3 +15,4 @@ class PersonCreate(PersonUpdate):
     name: str = PersonFields.name
     address: Address = PersonFields.address
     # Birth remains Optional, so is not required to re-declare
+

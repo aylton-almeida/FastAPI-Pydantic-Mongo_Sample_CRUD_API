@@ -6,15 +6,15 @@ Test write actions (create, update, delete)
 from datetime import datetime
 from random import randint
 
+# # Installed # #
+import pydantic
+from dateutil.relativedelta import relativedelta
+from fastapi import status as statuscode
+from freezegun import freeze_time
+
 # # Project # #
 from people_api.models import *
 from people_api.repositories import PeopleRepository
-
-# # Installed # #
-import pydantic
-from freezegun import freeze_time
-from dateutil.relativedelta import relativedelta
-from fastapi import status as statuscode
 
 # # Package # #
 from .base import BaseTest
@@ -23,9 +23,9 @@ from .utils import *
 
 class PersonAsCreate(PersonCreate):
     """This model is used to convert PersonRead to PersonCreate,
-     to compare the responses returned by the API with the create objects sent"""
-    class Config(PersonCreate.Config):
-        extra = pydantic.Extra.ignore
+    to compare the responses returned by the API with the create objects sent"""
+
+    model_config = {"extra": "ignore"}
 
 
 class TestCreate(BaseTest):
@@ -66,7 +66,8 @@ class TestCreate(BaseTest):
     def test_timestamp_created_updated(self):
         """Create a person and assert the created and updated timestamp fields.
         The creation is performed against the PeopleRepository,
-        since mocking the time would not work as the testing API runs on another process"""
+        since mocking the time would not work as the testing API runs on another process
+        """
         iso_timestamp = "2020-01-01T00:00:00+00:00"
         expected_timestamp = int(datetime.fromisoformat(iso_timestamp).timestamp())
 
@@ -92,7 +93,9 @@ class TestDelete(BaseTest):
         Should return not found 404 error and the identifier"""
         person_id = get_uuid()
 
-        response = self.delete_person(person_id, statuscode=statuscode.HTTP_404_NOT_FOUND)
+        response = self.delete_person(
+            person_id, statuscode=statuscode.HTTP_404_NOT_FOUND
+        )
         assert response.json()["identifier"] == person_id
 
 
@@ -108,7 +111,11 @@ class TestUpdate(BaseTest):
 
         read = PersonRead(**self.get_person(person.person_id).json())
         assert read.name == new_name
-        assert read.dict() == {**person.dict(), "name": new_name, "updated": read.updated}
+        assert read.dict() == {
+            **person.dict(),
+            "name": new_name,
+            "updated": read.updated,
+        }
 
     def test_update_nonexisting_person(self):
         """Update the name of a person that does not exist.
@@ -116,25 +123,34 @@ class TestUpdate(BaseTest):
         person_id = get_uuid()
         update = PersonUpdate(name=get_uuid())
 
-        response = self.update_person(person_id, update.dict(), statuscode=statuscode.HTTP_404_NOT_FOUND)
+        response = self.update_person(
+            person_id, update.dict(), statuscode=statuscode.HTTP_404_NOT_FOUND
+        )
         assert response.json()["identifier"] == person_id
 
     def test_update_person_none_attributes(self):
         """Update a person sending an empty object.
         Should return validation error 422"""
         person = get_existing_person()
-        self.update_person(person.person_id, {}, statuscode=statuscode.HTTP_422_UNPROCESSABLE_ENTITY)
+        self.update_person(
+            person.person_id, {}, statuscode=statuscode.HTTP_422_UNPROCESSABLE_ENTITY
+        )
 
     def test_update_person_extra_attributes(self):
         """Update a person sending unknown attributes.
         Should return validation error 422"""
         person = get_existing_person()
-        self.update_person(person.person_id, {"foo": "bar"}, statuscode=statuscode.HTTP_422_UNPROCESSABLE_ENTITY)
+        self.update_person(
+            person.person_id,
+            {"foo": "bar"},
+            statuscode=statuscode.HTTP_422_UNPROCESSABLE_ENTITY,
+        )
 
     def test_timestamp_updated(self):
         """Update a person and assert the updated timestamp.
         The update is performed against the PeopleRepository,
-        since mocking the time would not work as the testing API runs on another process"""
+        since mocking the time would not work as the testing API runs on another process
+        """
         iso_timestamp = "2020-04-01T00:00:00+00:00"
         expected_timestamp = int(datetime.fromisoformat(iso_timestamp).timestamp())
         person = get_existing_person()

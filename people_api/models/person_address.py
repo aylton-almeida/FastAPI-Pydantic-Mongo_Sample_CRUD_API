@@ -15,3 +15,4 @@ class Address(BaseModel):
     city: str = AddressFields.city
     state: str = AddressFields.state
     zip_code: str = AddressFields.zip_code
+
