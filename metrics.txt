@@ -33,6 +33,15 @@ Pylint: 6.33
 Pyright: 89 errors, 0 warnings
 
 
+Zero Shot 4o
+
+Runs: False
+Error: cannot import name 'RootValidator' from 'pydantic'
+Tests: 0/14 (0.0%)
+Pylint: 6.68
+Pyright: 71 errors, 0 warnings
+
+
 One Shot
 
 Example: example1_only_field_validator.py
