@@ -4,16 +4,17 @@ Models for Error responses. Custom exceptions must be associated with one of the
 
 # # Installed # #
 from pydantic import BaseModel, Field
+from typing import Annotated
 
 __all__ = ("BaseError", "BaseIdentifiedError", "NotFoundError", "AlreadyExistsError")
 
 
 class BaseError(BaseModel):
-    message: str = Field(..., description="Error message or description")
+    message: Annotated[str, Field(description="Error message or description")]
 
 
 class BaseIdentifiedError(BaseError):
-    identifier: str = Field(..., description="Unique identifier which this error references to")
+    identifier: Annotated[str, Field(description="Unique identifier which this error references to")]
 
 
 class NotFoundError(BaseIdentifiedError):
@@ -24,3 +25,4 @@ class NotFoundError(BaseIdentifiedError):
 class AlreadyExistsError(BaseIdentifiedError):
     """An entity being created already exists"""
     pass
+
