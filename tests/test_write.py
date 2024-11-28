@@ -7,7 +7,7 @@ from datetime import datetime
 from random import randint
 
 # # Installed # #
-import pydantic
+from pydantic import Extra
 from dateutil.relativedelta import relativedelta
 from fastapi import status as statuscode
 from freezegun import freeze_time
@@ -25,12 +25,11 @@ class PersonAsCreate(PersonCreate):
     """This model is used to convert PersonRead to PersonCreate,
     to compare the responses returned by the API with the create objects sent"""
 
-    class Config(PersonCreate.Config):
-        extra = pydantic.Extra.ignore
+    model_config = {"extra": Extra.ignore}
 
 
 class TestCreate(BaseTest):
-    def test_create_person(self):
+    def test_create_person(self) -> None:
         """Create a person.
         Should return the person"""
         create = get_person_create().dict()
@@ -39,7 +38,7 @@ class TestCreate(BaseTest):
         response_as_create = PersonAsCreate(**response.json())
         assert response_as_create.dict() == create
 
-    def test_create_person_assert_birth_age(self):
+    def test_create_person_assert_birth_age(self) -> None:
         """Create a person.
         Should create the person with the given date of birth and calculate its age"""
         expected_age = randint(5, 25)
@@ -53,7 +52,7 @@ class TestCreate(BaseTest):
         assert response_as_read.birth == birth
         assert response_as_read.age == expected_age
 
-    def test_create_person_without_birth(self):
+    def test_create_person_without_birth(self) -> None:
         """Create a person without date of birth.
         Should return the person without birth nor age"""
         create = get_person_create(birth=None).dict()
@@ -64,7 +63,7 @@ class TestCreate(BaseTest):
         assert response_as_read.birth is None
         assert response_as_read.age is None
 
-    def test_timestamp_created_updated(self):
+    def test_timestamp_created_updated(self) -> None:
         """Create a person and assert the created and updated timestamp fields.
         The creation is performed against the PeopleRepository,
         since mocking the time would not work as the testing API runs on another process
@@ -81,7 +80,7 @@ class TestCreate(BaseTest):
 
 
 class TestDelete(BaseTest):
-    def test_delete_person(self):
+    def test_delete_person(self) -> None:
         """Delete a person.
         Then get it. Should end returning 404 not found"""
         person = get_existing_person()
@@ -89,7 +88,7 @@ class TestDelete(BaseTest):
         self.delete_person(person.person_id)
         self.get_person(person.person_id, statuscode=statuscode.HTTP_404_NOT_FOUND)
 
-    def test_delete_nonexisting_person(self):
+    def test_delete_nonexisting_person(self) -> None:
         """Delete a person that does not exist.
         Should return not found 404 error and the identifier"""
         person_id = get_uuid()
@@ -101,7 +100,7 @@ class TestDelete(BaseTest):
 
 
 class TestUpdate(BaseTest):
-    def test_update_person_single_attribute(self):
+    def test_update_person_single_attribute(self) -> None:
         """Update the name of a person.
         Then get it. Should return the person with its name updated"""
         person = get_existing_person()
@@ -118,7 +117,7 @@ class TestUpdate(BaseTest):
             "updated": read.updated,
         }
 
-    def test_update_nonexisting_person(self):
+    def test_update_nonexisting_person(self) -> None:
         """Update the name of a person that does not exist.
         Should return not found 404 error and the identifier"""
         person_id = get_uuid()
@@ -129,7 +128,7 @@ class TestUpdate(BaseTest):
         )
         assert response.json()["identifier"] == person_id
 
-    def test_update_person_none_attributes(self):
+    def test_update_person_none_attributes(self) -> None:
         """Update a person sending an empty object.
         Should return validation error 422"""
         person = get_existing_person()
@@ -137,7 +136,7 @@ class TestUpdate(BaseTest):
             person.person_id, {}, statuscode=statuscode.HTTP_422_UNPROCESSABLE_ENTITY
         )
 
-    def test_update_person_extra_attributes(self):
+    def test_update_person_extra_attributes(self) -> None:
         """Update a person sending unknown attributes.
         Should return validation error 422"""
         person = get_existing_person()
@@ -147,7 +146,7 @@ class TestUpdate(BaseTest):
             statuscode=statuscode.HTTP_422_UNPROCESSABLE_ENTITY,
         )
 
-    def test_timestamp_updated(self):
+    def test_timestamp_updated(self) -> None:
         """Update a person and assert the updated timestamp.
         The update is performed against the PeopleRepository,
         since mocking the time would not work as the testing API runs on another process
@@ -166,3 +165,4 @@ class TestUpdate(BaseTest):
         assert read.updated == expected_timestamp
         assert read.updated != read.created
         assert read.created == person.created
+

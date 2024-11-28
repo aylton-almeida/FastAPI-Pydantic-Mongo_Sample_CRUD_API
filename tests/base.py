@@ -22,7 +22,7 @@ class BaseTest:
     api_url: str
 
     @classmethod
-    def setup_class(cls):
+    def setup_class(cls) -> None:
         # Startup the API on a process before all tests
         # NOTE process can make mocking more difficult
         api_port = api_settings.port = get_free_port()
@@ -32,37 +32,39 @@ class BaseTest:
         wait_for(port=api_port)
 
     @classmethod
-    def teardown_class(cls):
+    def teardown_class(cls) -> None:
         cls.api_process.terminate()
 
     @classmethod
-    def teardown_method(cls):
+    def teardown_method(cls) -> None:
         # Delete all documents from collection after each test
         collection.delete_many({})
 
     # # API Methods # #
 
-    def get_person(self, person_id: str, statuscode: int = 200):
+    def get_person(self, person_id: str, statuscode: int = 200) -> httpx.Response:
         r = httpx.get(f"{self.api_url}/people/{person_id}")
         assert r.status_code == statuscode, r.text
         return r
 
-    def list_people(self, statuscode: int = 200):
+    def list_people(self, statuscode: int = 200) -> httpx.Response:
         r = httpx.get(f"{self.api_url}/people")
         assert r.status_code == statuscode, r.text
         return r
 
-    def create_person(self, create: dict, statuscode: int = 201):
+    def create_person(self, create: dict, statuscode: int = 201) -> httpx.Response:
         r = httpx.post(f"{self.api_url}/people", json=create)
         assert r.status_code == statuscode, r.text
         return r
 
-    def update_person(self, person_id: str, update: dict, statuscode: int = 204):
+    def update_person(self, person_id: str, update: dict, statuscode: int = 204) -> httpx.Response:
         r = httpx.patch(f"{self.api_url}/people/{person_id}", json=update)
         assert r.status_code == statuscode, r.text
         return r
 
-    def delete_person(self, person_id: str, statuscode: int = 204):
+    def delete_person(self, person_id: str, statuscode: int = 204) -> httpx.Response:
         r = httpx.delete(f"{self.api_url}/people/{person_id}")
         assert r.status_code == statuscode, r.text
         return r
+
+

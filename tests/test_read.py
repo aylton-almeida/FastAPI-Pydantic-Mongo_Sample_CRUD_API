@@ -11,7 +11,7 @@ from .utils import *
 
 
 class TestGet(BaseTest):
-    def test_get_existing_person(self):
+    def test_get_existing_person(self) -> None:
         """Having an existing person, get it.
         Should return the person"""
         person = get_existing_person()
@@ -19,7 +19,7 @@ class TestGet(BaseTest):
         response = self.get_person(person.person_id)
         assert response.json() == person.dict()
 
-    def test_get_nonexisting_person(self):
+    def test_get_nonexisting_person(self) -> None:
         """Get a person that does not exist.
         Should return not found 404 error and the identifier"""
         person_id = get_uuid()
@@ -29,10 +29,12 @@ class TestGet(BaseTest):
 
 
 class TestList(BaseTest):
-    def test_list_people(self):
+    def test_list_people(self) -> None:
         """Having multiple persons, list all of them.
         Should return all of them in array"""
         people = [get_existing_person() for _ in range(4)]
 
         response = self.list_people()
         assert response.json() == [p.dict() for p in people]
+
+
