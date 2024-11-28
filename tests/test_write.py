@@ -17,15 +17,16 @@ from people_api.models import *
 from people_api.repositories import PeopleRepository
 
 # # Package # #
-from tests.base import BaseTest
-from tests.utils import *
+from .base import BaseTest
+from .utils import *
 
 
 class PersonAsCreate(PersonCreate):
     """This model is used to convert PersonRead to PersonCreate,
     to compare the responses returned by the API with the create objects sent"""
 
-    model_config = {"extra": "ignore"}
+    class Config(PersonCreate.Config):
+        extra = pydantic.Extra.ignore
 
 
 class TestCreate(BaseTest):

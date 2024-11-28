@@ -6,8 +6,8 @@ Test read actions (get one, list)
 from fastapi import status as statuscode
 
 # # Package # #
-from tests.base import BaseTest
-from tests.utils import *
+from .base import BaseTest
+from .utils import *
 
 
 class TestGet(BaseTest):

@@ -20,7 +20,7 @@ def get_address(**kwargs):
             "street": get_uuid(),
             "city": get_uuid(),
             "state": get_uuid(),
-            "zip_code": f"{randint(1000, 10000)}",
+            "zip_code": randint(1000, 10000),
             **kwargs,
         }
     )
