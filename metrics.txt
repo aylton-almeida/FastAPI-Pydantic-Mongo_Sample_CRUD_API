@@ -1,29 +1,3 @@
-Before Migration
-
-Runs: True
-Tests: 14/14 (100.00%)
-Pylint: 6.35
-Pyright: 84 errors, 0 warnings
-
-
-Automatic Migration
-Tool: https://github.com/pydantic/bump-pydantic
-
-Runs: False
-Error: root_validator is deprecated
-Tests: 0/14 (0.0%)
-Pylint: 7.14
-Pyright: 69 errors, 0 warnings
-
-
-Manual Migration
-
-Runs: True
-Tests: 14/14 (100.00%)
-Pylint: 8.20
-Pyright: 65 errors, 0 warnings
-
-
 Zero Shot
 
 Runs: False
@@ -31,15 +5,6 @@ Error: root_validator is deprecated
 Tests: 0/14 (0.0%)
 Pylint: 6.33
 Pyright: 89 errors, 0 warnings
-
-
-Zero Shot 4o
-
-Runs: False
-Error: cannot import name 'RootValidator' from 'pydantic'
-Tests: 0/14 (0.0%)
-Pylint: 6.68
-Pyright: 71 errors, 0 warnings
 
 
 One Shot
@@ -74,3 +39,56 @@ Error: AttributeError: name
 Tests: 0/14 (0.0%)
 Pylint: 6.59
 Pyright: 94 errors, 0 warnings
+
+
+Before Migration
+
+Runs: True
+Tests: 14/14 (100.00%)
+Pylint: 6.35
+Pyright: 84 errors, 0 warnings
+
+
+Automatic Migration
+Tool: https://github.com/pydantic/bump-pydantic
+
+Runs: False
+Error: root_validator is deprecated
+Tests: 0/14 (0.0%)
+Pylint: 7.14
+Pyright: 69 errors, 0 warnings
+
+
+Manual Migration
+
+Runs: True
+Tests: 14/14 (100.00%)
+Pylint: 8.20
+Pyright: 65 errors, 0 warnings
+
+
+Zero Shot 4o
+
+Runs: False
+Error: cannot import name 'RootValidator' from 'pydantic'
+Tests: 0/14 (0.0%)
+Pylint: 6.68
+Pyright: 71 errors, 0 warnings
+
+
+One Shot 4o
+
+Example: example2_manually_made.py
+Runs: True
+Tests: 0/14 (0.0%)
+Pylint: 7.20
+Pyright: 72 errors, 0 warnings
+
+
+Chain of Thoughts 4o
+
+Example: example2_manually_made.py
+Runs: True
+Tests: 2/14 (14.29%)
+Pylint: 7.34
+Pyright: 30 errors, 0 warnings
