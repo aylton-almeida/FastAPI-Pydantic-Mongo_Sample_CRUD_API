@@ -1,3 +1,46 @@
+Zero Shot
+
+Runs: False
+Error: root_validator is deprecated
+Tests: 0/14 (0.0%)
+Pylint: 6.33
+Pyright: 89 errors, 0 warnings
+
+
+One Shot
+
+Example: example1_only_field_validator.py
+Runs: False
+Error: Using @dataclasses on top of Pydantic models
+Tests: 0/14 (0.0%)
+Pylint: 6.55
+Pyright: 87 errors, 0 warnings
+
+Example: example2_manually_made.py
+Runs: False
+Error: root_validator is deprecated
+Tests: 0/14 (0.0%)
+Pylint: 6.11
+Pyright: 92 errors, 0 warnings
+
+
+Chain of Thoughts
+
+Example: example1_only_field_validator.py
+Runs: False
+Error: root_validator is deprecated
+Tests: 0/14 (0.0%)
+Pylint: 5.89
+Pyright: 86 errors, 0 warnings
+
+Example: example2_manually_made.py
+Runs: False
+Error: AttributeError: name
+Tests: 0/14 (0.0%)
+Pylint: 6.59
+Pyright: 94 errors, 0 warnings
+
+
 Before Migration
 
 Runs: True
@@ -24,15 +67,6 @@ Pylint: 8.20
 Pyright: 65 errors, 0 warnings
 
 
-Zero Shot
-
-Runs: False
-Error: root_validator is deprecated
-Tests: 0/14 (0.0%)
-Pylint: 6.33
-Pyright: 89 errors, 0 warnings
-
-
 Zero Shot 4o
 
 Runs: False
@@ -42,44 +76,19 @@ Pylint: 6.68
 Pyright: 71 errors, 0 warnings
 
 
-One Shot
-
-Example: example1_only_field_validator.py
-Runs: False
-Error: Using @dataclasses on top of Pydantic models
-Tests: 0/14 (0.0%)
-Pylint: 6.55
-Pyright: 87 errors, 0 warnings
-
-Example: example2_manually_made.py
-Runs: False
-Error: root_validator is deprecated
-Tests: 0/14 (0.0%)
-Pylint: 6.11
-Pyright: 92 errors, 0 warnings
-
-
 One Shot 4o
 
 Example: example2_manually_made.py
 Runs: True
 Tests: 0/14 (0.0%)
-Pylint: 5.08
-Pyright: 15 errors, 0 warnings
+Pylint: 7.20
+Pyright: 72 errors, 0 warnings
 
 
-Chain of Thoughts
-
-Example: example1_only_field_validator.py
-Runs: False
-Error: root_validator is deprecated
-Tests: 0/14 (0.0%)
-Pylint: 5.89
-Pyright: 86 errors, 0 warnings
+Chain of Thoughts 4o
 
 Example: example2_manually_made.py
-Runs: False
-Error: AttributeError: name
-Tests: 0/14 (0.0%)
-Pylint: 6.59
-Pyright: 94 errors, 0 warnings
+Runs: True
+Tests: 2/14 (14.29%)
+Pylint: 7.34
+Pyright: 30 errors, 0 warnings
