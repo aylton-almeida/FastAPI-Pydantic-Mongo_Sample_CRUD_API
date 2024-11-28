@@ -81,8 +81,8 @@ One Shot 4o
 Example: example2_manually_made.py
 Runs: True
 Tests: 0/14 (0.0%)
-Pylint: 5.08
-Pyright: 15 errors, 0 warnings
+Pylint: 7.20
+Pyright: 72 errors, 0 warnings
 
 
 Chain of Thoughts 4o
@@ -90,5 +90,5 @@ Chain of Thoughts 4o
 Example: example2_manually_made.py
 Runs: True
 Tests: 2/14 (14.29%)
-Pylint: 5.04
-Pyright: 28 errors, 0 warnings
+Pylint: 7.34
+Pyright: 30 errors, 0 warnings
