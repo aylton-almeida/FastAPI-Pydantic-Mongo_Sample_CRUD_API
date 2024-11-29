@@ -7,7 +7,7 @@ from multiprocessing import Process
 
 # # Installed # #
 import httpx
-from wait4it import wait_for, get_free_port
+from wait4it import get_free_port, wait_for
 
 # # Project # #
 from people_api import run
@@ -42,27 +42,33 @@ class BaseTest:
 
     # # API Methods # #
 
-    def get_person(self, person_id: str, statuscode: int = 200):
-        r = httpx.get(f"{self.api_url}/people/{person_id}")
+    async def get_person(self, person_id: str, statuscode: int = 200):
+        async with httpx.AsyncClient() as client:
+            r = await client.get(f"{self.api_url}/people/{person_id}")
         assert r.status_code == statuscode, r.text
         return r
 
-    def list_people(self, statuscode: int = 200):
-        r = httpx.get(f"{self.api_url}/people")
+    async def list_people(self, statuscode: int = 200):
+        async with httpx.AsyncClient() as client:
+            r = await client.get(f"{self.api_url}/people")
         assert r.status_code == statuscode, r.text
         return r
 
-    def create_person(self, create: dict, statuscode: int = 201):
-        r = httpx.post(f"{self.api_url}/people", json=create)
+    async def create_person(self, create: dict, statuscode: int = 201):
+        async with httpx.AsyncClient() as client:
+            r = await client.post(f"{self.api_url}/people", json=create)
         assert r.status_code == statuscode, r.text
         return r
 
-    def update_person(self, person_id: str, update: dict, statuscode: int = 204):
-        r = httpx.patch(f"{self.api_url}/people/{person_id}", json=update)
+    async def update_person(self, person_id: str, update: dict, statuscode: int = 204):
+        async with httpx.AsyncClient() as client:
+            r = await client.patch(f"{self.api_url}/people/{person_id}", json=update)
         assert r.status_code == statuscode, r.text
         return r
 
-    def delete_person(self, person_id: str, statuscode: int = 204):
-        r = httpx.delete(f"{self.api_url}/people/{person_id}")
+    async def delete_person(self, person_id: str, statuscode: int = 204):
+        async with httpx.AsyncClient() as client:
+            r = await client.delete(f"{self.api_url}/people/{person_id}")
         assert r.status_code == statuscode, r.text
         return r
+

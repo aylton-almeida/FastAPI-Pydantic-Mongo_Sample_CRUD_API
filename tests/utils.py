@@ -14,21 +14,21 @@ from people_api.utils import get_uuid
 __all__ = ("get_person_create", "get_existing_person", "get_uuid")
 
 
-def get_address(**kwargs):
-    return Address(
-        **{
+def get_address(**kwargs) -> Address:
+    return Address.model_validate(
+        {
             "street": get_uuid(),
             "city": get_uuid(),
             "state": get_uuid(),
-            "zip_code": f"{randint(1000, 10000)}",
+            "zip_code": randint(1000, 10000),
             **kwargs,
         }
     )
 
 
-def get_person_create(**kwargs):
-    return PersonCreate(
-        **{
+def get_person_create(**kwargs) -> PersonCreate:
+    return PersonCreate.model_validate(
+        {
             "name": get_uuid(),
             "address": get_address(),
             "birth": datetime.now().date(),
@@ -37,5 +37,6 @@ def get_person_create(**kwargs):
     )
 
 
-def get_existing_person(**kwargs):
-    return PeopleRepository.create(get_person_create(**kwargs))
+async def get_existing_person(**kwargs) -> Person:
+    return await PeopleRepository.create(get_person_create(**kwargs))
+
