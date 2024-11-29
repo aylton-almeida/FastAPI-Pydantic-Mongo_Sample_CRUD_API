@@ -1,0 +1,11 @@
+The python code bellow uses the library pydantic with version 1. Migrate it so that it works 
+with version 2 of pydantic. Start by reading the official Pydantic migration guide to help you with the 
+migration. You can find it here https://docs.pydantic.dev/2.0/migration/Make the code compatible with 
+python's asyncio. Use python's typing module to add type hints to the code. Your answer must only contain 
+code. Do not explain it. Do not add markdown backticks for code. Do not add extra functionality to the 
+code. Do not remove code that is not being changed. If there's no need to change the code, answer only with
+the code itself. The first line of code must have a comment "### START CODE ###". The last line of code 
+must have a comment "### END CODE ###".
+
+Here is the code to migrate:
+...
