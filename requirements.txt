@@ -3,3 +3,5 @@ uvicorn
 pymongo
 python-dateutil
 python-dotenv
+pydantic==2.9.0
+pydantic-settings==2.6.1
