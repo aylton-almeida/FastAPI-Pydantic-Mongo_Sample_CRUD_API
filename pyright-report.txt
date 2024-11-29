@@ -1,0 +1,220 @@
+/home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/settings.py
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/settings.py:12:11 - error: "Config" overrides symbol of same name in class "BaseSettings"
+    "people_api.settings.BaseSettings.Config" is not assignable to "pydantic.env_settings.BaseSettings.Config"
+    Type "type[people_api.settings.BaseSettings.Config]" is not assignable to type "type[pydantic.env_settings.BaseSettings.Config]" (reportIncompatibleVariableOverride)
+/home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "default_factory" of type "NoArgAnyCallable | None" in function "Field"
+    Type "int" is not assignable to type "NoArgAnyCallable | None"
+      Type "int" is not assignable to type "NoArgAnyCallable"
+      "int" is not assignable to "None" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "alias" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "title" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "const" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "allow_inf_nan" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "unique_items" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "allow_mutation" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "regex" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "discriminator" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:26:11 - error: Argument of type "int" cannot be assigned to parameter "repr" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "default_factory" of type "NoArgAnyCallable | None" in function "Field"
+    Type "int | float" is not assignable to type "NoArgAnyCallable | None"
+      Type "float" is not assignable to type "NoArgAnyCallable | None"
+        Type "float" is not assignable to type "NoArgAnyCallable"
+        "float" is not assignable to "None" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "title" of type "str" in function "Field"
+    Type "int | float" is not assignable to type "str"
+      "float" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "const" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "allow_inf_nan" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "max_digits" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "decimal_places" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "min_items" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "max_items" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "unique_items" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "min_length" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "max_length" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "allow_mutation" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "regex" of type "str" in function "Field"
+    Type "int | float" is not assignable to type "str"
+      "float" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "discriminator" of type "str" in function "Field"
+    Type "int | float" is not assignable to type "str"
+      "float" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:53:11 - error: Argument of type "int | float" cannot be assigned to parameter "repr" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "default_factory" of type "NoArgAnyCallable | None" in function "Field"
+    Type "int | float" is not assignable to type "NoArgAnyCallable | None"
+      Type "float" is not assignable to type "NoArgAnyCallable | None"
+        Type "float" is not assignable to type "NoArgAnyCallable"
+        "float" is not assignable to "None" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "title" of type "str" in function "Field"
+    Type "int | float" is not assignable to type "str"
+      "float" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "const" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "allow_inf_nan" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "max_digits" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "decimal_places" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "min_items" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "max_items" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "unique_items" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "min_length" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "max_length" of type "int" in function "Field"
+    Type "int | float" is not assignable to type "int"
+      "float" is not assignable to "int" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "allow_mutation" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "regex" of type "str" in function "Field"
+    Type "int | float" is not assignable to type "str"
+      "float" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "discriminator" of type "str" in function "Field"
+    Type "int | float" is not assignable to type "str"
+      "float" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:59:11 - error: Argument of type "int | float" cannot be assigned to parameter "repr" of type "bool" in function "Field"
+    Type "int | float" is not assignable to type "bool"
+      "float" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "default_factory" of type "NoArgAnyCallable | None" in function "Field"
+    Type "int" is not assignable to type "NoArgAnyCallable | None"
+      Type "int" is not assignable to type "NoArgAnyCallable"
+      "int" is not assignable to "None" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "alias" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "title" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "const" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "allow_inf_nan" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "unique_items" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "allow_mutation" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "regex" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "discriminator" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:68:11 - error: Argument of type "int" cannot be assigned to parameter "repr" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "default_factory" of type "NoArgAnyCallable | None" in function "Field"
+    Type "int" is not assignable to type "NoArgAnyCallable | None"
+      Type "int" is not assignable to type "NoArgAnyCallable"
+      "int" is not assignable to "None" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "alias" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "title" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "const" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "allow_inf_nan" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "unique_items" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "allow_mutation" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "regex" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "discriminator" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:73:11 - error: Argument of type "int" cannot be assigned to parameter "repr" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "default_factory" of type "NoArgAnyCallable | None" in function "Field"
+    Type "int" is not assignable to type "NoArgAnyCallable | None"
+      Type "int" is not assignable to type "NoArgAnyCallable"
+      "int" is not assignable to "None" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "alias" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "title" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "const" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "allow_inf_nan" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "unique_items" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "allow_mutation" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "regex" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "discriminator" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:78:11 - error: Argument of type "int" cannot be assigned to parameter "repr" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "default_factory" of type "NoArgAnyCallable | None" in function "Field"
+    Type "int" is not assignable to type "NoArgAnyCallable | None"
+      Type "int" is not assignable to type "NoArgAnyCallable"
+      "int" is not assignable to "None" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "alias" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "title" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "const" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "allow_inf_nan" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "unique_items" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "allow_mutation" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "regex" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "discriminator" of type "str" in function "Field"
+    "int" is not assignable to "str" (reportArgumentType)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/fields.py:83:11 - error: Argument of type "int" cannot be assigned to parameter "repr" of type "bool" in function "Field"
+    "int" is not assignable to "bool" (reportArgumentType)
+/home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/person_create.py
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/person_create.py:15:5 - error: "name" overrides symbol of same name in class "PersonUpdate"
+    Variable is mutable so its type is invariant
+      Override type "str" is not the same as base type "str | None" (reportIncompatibleVariableOverride)
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/person_create.py:16:5 - error: "address" overrides symbol of same name in class "PersonUpdate"
+    Variable is mutable so its type is invariant
+      Override type "Address" is not the same as base type "Address | None" (reportIncompatibleVariableOverride)
+/home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/person_update.py
+  /home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/people_api/models/person_update.py:25:9 - error: Method "dict" overrides class "BaseModel" in an incompatible manner
+    Positional parameter count mismatch; base method has 3, but override has 2 (reportIncompatibleMethodOverride)
+84 errors, 0 warnings, 0 informations 
