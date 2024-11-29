@@ -1,0 +1,52 @@
+Using prompt for file
+/home/stevreeper/code/projects/school/mestrado/migration-repos/FastAPI-Pydantic-Mongo_Sample_CRUD_API/tests
+/test_read.py: The python code bellow uses the library pydantic with version 1. Migrate it so that it works
+with version 2 of pydantic. Start by reading the official Pydantic migration guide to help you with the 
+migration. You can find it here https://docs.pydantic.dev/2.0/migration/Make the code compatible with 
+python's asyncio. Use python's typing module to add type hints to the code. Your answer must only contain 
+code. Do not explain it. Do not add markdown backticks for code. Do not add extra functionality to the 
+code. Do not remove code that is not being changed. If there's no need to change the code, answer only with
+the code itself. The first line of code must have a comment "### START CODE ###". The last line of code 
+must have a comment "### END CODE ###".
+
+Use the following code block as an example of migrated code, follow the same patterns used in it:
+
+### START CODE ###
+# Based on https://docs.pydantic.dev/latest/examples/files/#json-data
+
+
+from __future__ import annotations
+
+import pathlib
+
+from pydantic import BaseModel, EmailStr, Field, PositiveInt, model_validator
+
+
+class Person(BaseModel):
+    name: str
+    age: PositiveInt
+    email: EmailStr
+    is_adult: bool = Field(False, description="Is this person an adult? (age >= 18)")
+
+    @model_validator(mode="before")
+    @classmethod
+    def _set_is_adult(cls, data) -> Person:
+        """Calculates if person is an adult based on age"""
+
+        if (age := data.get("age", 0)) and age >= 18:
+            data["is_adult"] = True
+
+        return data
+
+    model_config = {"extra": "ignore"}
+
+
+json_string = pathlib.Path("person.json").read_text()
+person = Person.model_validate_json(json_string)
+print(repr(person))
+# > Person(name='John Doe', age=30, email='john@example.com')
+
+### END CODE ###
+
+Here is the code to migrate:
+...
