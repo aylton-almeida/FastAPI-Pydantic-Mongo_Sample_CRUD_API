@@ -7,7 +7,7 @@ from multiprocessing import Process
 
 # # Installed # #
 import httpx
-from wait4it import wait_for, get_free_port
+from wait4it import get_free_port, wait_for
 
 # # Project # #
 from people_api import run
@@ -66,3 +66,4 @@ class BaseTest:
         r = httpx.delete(f"{self.api_url}/people/{person_id}")
         assert r.status_code == statuscode, r.text
         return r
+
